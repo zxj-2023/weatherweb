@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能天气提醒助手</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- 头部导航 -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-cloud-sun"></i>
+                <h1>智能天气助手</h1>
+            </div>
+            <nav class="nav">
+                <button id="settingsBtn" class="btn-icon">
+                    <i class="fas fa-cog"></i>
+                </button>
+                <button id="refreshBtn" class="btn-icon">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </nav>
+        </header>
+
+        <!-- 城市搜索区域 -->
+        <section class="search-section">
+            <div class="search-container">
+                <input type="text" id="cityInput" placeholder="搜索城市..." class="search-input">
+                <button id="searchBtn" class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <div class="city-tabs" id="cityTabs">
+                <!-- 城市标签会动态添加 -->
+            </div>
+        </section>
+
+        <!-- 主要内容区域 -->
+        <main class="main-content">
+            <!-- 当前天气卡片 -->
+            <section class="current-weather">
+                <div class="weather-card main-card">
+                    <div class="weather-header">
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span id="currentLocation">北京</span>
+                        </div>
+                        <div class="date-time">
+                            <span id="currentDateTime"></span>
+                        </div>
+                    </div>
+
+                    <div class="weather-main">
+                        <div class="weather-icon">
+                            <i id="weatherIcon" class="fas fa-sun"></i>
+                        </div>
+                        <div class="temperature">
+                            <span id="currentTemp">--</span>°C
+                        </div>
+                        <div class="weather-desc">
+                            <span id="weatherDesc">--</span>
+                        </div>
+                    </div>
+
+                    <div class="weather-details">
+                        <div class="detail-item">
+                            <span class="label">体感温度</span>
+                            <span id="feelsLike" class="value">--°C</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">湿度</span>
+                            <span id="humidity" class="value">--%</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">风速</span>
+                            <span id="windSpeed" class="value">-- m/s</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">气压</span>
+                            <span id="pressure" class="value">-- hPa</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 智能提醒区域 -->
+                <div class="reminder-card" id="reminderCard" style="display: none;">
+                    <div class="reminder-header">
+                        <i class="fas fa-bell"></i>
+                        <span>智能提醒</span>
+                    </div>
+                    <div class="reminder-content" id="reminderContent">
+                        <!-- 提醒内容会动态添加 -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- 详细信息区域 -->
+            <section class="details-section">
+                <!-- 空气质量 -->
+                <div class="info-card">
+                    <h3><i class="fas fa-smog"></i> 空气质量</h3>
+                    <div class="air-quality">
+                        <div class="aqi-value">
+                            <span id="aqiValue">--</span>
+                            <span class="aqi-level" id="aqiLevel">--</span>
+                        </div>
+                        <div class="aqi-details">
+                            <div class="aqi-item">
+                                <span>PM2.5: </span>
+                                <span id="pm25">-- μg/m³</span>
+                            </div>
+                            <div class="aqi-item">
+                                <span>PM10: </span>
+                                <span id="pm10">-- μg/m³</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 日出日落 -->
+                <div class="info-card">
+                    <h3><i class="fas fa-sun"></i> 日出日落</h3>
+                    <div class="sun-times">
+                        <div class="sun-item">
+                            <i class="fas fa-sunrise"></i>
+                            <span>日出</span>
+                            <span id="sunrise">--:--</span>
+                        </div>
+                        <div class="sun-item">
+                            <i class="fas fa-sunset"></i>
+                            <span>日落</span>
+                            <span id="sunset">--:--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 能见度 -->
+                <div class="info-card">
+                    <h3><i class="fas fa-eye"></i> 能见度</h3>
+                    <div class="visibility">
+                        <span id="visibility">-- km</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 天气预报区域 -->
+            <section class="forecast-section">
+                <!-- 24小时预报 -->
+                <div class="forecast-card">
+                    <h3><i class="fas fa-clock"></i> 24小时预报</h3>
+                    <div class="hourly-forecast" id="hourlyForecast">
+                        <!-- 小时预报会动态添加 -->
+                    </div>
+                </div>
+
+                <!-- 7天预报 -->
+                <div class="forecast-card">
+                    <h3><i class="fas fa-calendar-week"></i> 7天预报</h3>
+                    <div class="daily-forecast" id="dailyForecast">
+                        <!-- 日预报会动态添加 -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- 设置弹窗 -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>设置</h2>
+                <span class="close" id="closeSettings">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="settings-section">
+                    <h3>默认城市</h3>
+                    <input type="text" id="defaultCity" placeholder="设置默认城市">
+                </div>
+
+                <div class="settings-section">
+                    <h3>提醒设置</h3>
+                    <div class="reminder-settings">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rainReminder" checked>
+                            <span class="checkmark"></span>
+                            雨天提醒带伞
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="coldReminder" checked>
+                            <span class="checkmark"></span>
+                            低温提醒添衣
+                        </label> <label class="checkbox-label">
+                            <input type="checkbox" id="airReminder" checked>
+                            <span class="checkmark"></span>
+                            空气质量提醒
+                        </label>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h3>温度阈值设置</h3>
+                    <div class="threshold-setting">
+                        <label>低温警告阈值:</label>
+                        <input type="number" id="coldThreshold" value="5" min="-20" max="20">
+                        <span>°C</span>
+                    </div>
+                    <div class="threshold-setting">
+                        <label>降雨概率阈值:</label>
+                        <input type="number" id="rainThreshold" value="60" min="0" max="100">
+                        <span>%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="saveSettings" class="btn-primary">保存设置</button>
+                <button id="cancelSettings" class="btn-secondary">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 加载动画 -->
+    <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+        <div class="spinner"></div>
+        <p>正在获取天气数据...</p>
+    </div>
+
+    <!-- JavaScript文件 -->
+    <script src="/static/js/utils.js"></script>
+    <script src="/static/js/weather.js"></script>
+    <script src="/static/js/settings.js"></script>
+    <script src="/static/js/main.js"></script>
+</body>
+
+</html>

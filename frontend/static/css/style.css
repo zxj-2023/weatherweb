@@ -1,0 +1,636 @@
+/* 基本样式 */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 头部导航 */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo i {
+    font-size: 2em;
+    color: #2980b9;
+    margin-right: 10px;
+}
+
+.logo h1 {
+    font-size: 1.8em;
+    margin: 0;
+    color: #2c3e50;
+}
+
+.nav .btn-icon {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    margin-left: 15px;
+    color: #555;
+}
+
+.nav .btn-icon:hover {
+    color: #2980b9;
+}
+
+/* 搜索区域 */
+.search-section {
+    margin-bottom: 20px;
+}
+
+.search-container {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.search-input {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    font-size: 1em;
+}
+
+.search-btn {
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.search-btn:hover {
+    background-color: #2980b9;
+}
+
+.city-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.city-tab {
+    padding: 8px 15px;
+    background-color: #e9ecef;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+
+.city-tab.active,
+.city-tab:hover {
+    background-color: #3498db;
+    color: white;
+}
+
+/* 主要内容区域 */
+.main-content {
+    display: grid;
+    gap: 20px;
+}
+
+/* 天气卡片通用样式 */
+.weather-card,
+.info-card,
+.forecast-card,
+.reminder-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.weather-card h3,
+.info-card h3,
+.forecast-card h3,
+.reminder-card span {
+    margin-top: 0;
+    color: #2c3e50;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.weather-card h3 i,
+.info-card h3 i,
+.forecast-card h3 i,
+.reminder-card i {
+    margin-right: 8px;
+    color: #3498db;
+}
+
+
+/* 当前天气卡片 */
+.current-weather {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    /* 主卡片占2/3，提醒卡片占1/3 */
+    gap: 20px;
+}
+
+.weather-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.location {
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.location i {
+    margin-right: 5px;
+    color: #e74c3c;
+}
+
+.date-time {
+    font-size: 0.9em;
+    color: #7f8c8d;
+}
+
+.weather-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.weather-icon i {
+    font-size: 5em;
+    color: #f39c12;
+    /* 默认为晴天颜色 */
+}
+
+.temperature {
+    font-size: 4em;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.weather-desc {
+    font-size: 1.5em;
+    color: #34495e;
+}
+
+.weather-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+    font-size: 0.95em;
+}
+
+.detail-item .label {
+    display: block;
+    color: #7f8c8d;
+    margin-bottom: 5px;
+}
+
+.detail-item .value {
+    font-weight: bold;
+}
+
+/* 智能提醒 */
+.reminder-card .reminder-header {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.reminder-content p {
+    margin: 5px 0;
+    padding: 8px;
+    background-color: #f9f9f9;
+    border-left: 3px solid #3498db;
+    border-radius: 3px;
+}
+
+/* 详细信息区域 */
+.details-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.info-card .fas {
+    /* Icon color for info cards */
+    color: #3498db;
+}
+
+.air-quality,
+.sun-times,
+.uv-info,
+.visibility {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.aqi-value,
+.uv-value {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.aqi-level,
+.uv-level {
+    font-size: 0.8em;
+    padding: 3px 8px;
+    border-radius: 10px;
+    color: white;
+    margin-left: 10px;
+}
+
+/* AQI Level Colors (example) */
+.aqi-level.good {
+    background-color: #2ecc71;
+}
+
+.aqi-level.moderate {
+    background-color: #f1c40f;
+}
+
+.aqi-level.unhealthy-sensitive {
+    background-color: #e67e22;
+}
+
+.aqi-level.unhealthy {
+    background-color: #e74c3c;
+}
+
+.aqi-level.very-unhealthy {
+    background-color: #9b59b6;
+}
+
+.aqi-level.hazardous {
+    background-color: #7f8c8d;
+}
+
+
+.sun-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sun-item i {
+    font-size: 1.5em;
+}
+
+/* 天气预报区域 */
+.forecast-section {
+    display: grid;
+    gap: 20px;
+}
+
+.hourly-forecast,
+.daily-forecast {
+    display: flex;
+    overflow-x: auto;
+    /* Allows horizontal scrolling */
+    padding-bottom: 10px;
+    /* Space for scrollbar */
+    gap: 15px;
+}
+
+.hour-item,
+.day-item {
+    min-width: 80px;
+    text-align: center;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+}
+
+.hour-item .time,
+.day-item .date {
+    font-size: 0.9em;
+    color: #555;
+}
+
+.hour-item .icon i,
+.day-item .icon i {
+    font-size: 2em;
+    margin: 10px 0;
+    color: #f39c12;
+    /* Default icon color */
+}
+
+.hour-item .temp,
+.day-item .temp {
+    font-weight: bold;
+}
+
+/* 设置弹窗 */
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Dim background */
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 500px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.close {
+    color: #aaa;
+    font-size: 2em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #333;
+}
+
+.settings-section {
+    margin-bottom: 20px;
+}
+
+.settings-section h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #34495e;
+}
+
+.settings-section input[type="text"],
+.settings-section input[type="number"] {
+    width: calc(100% - 22px);
+    /* Adjust for padding and border */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.reminder-settings .checkbox-label {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 1em;
+    user-select: none;
+}
+
+.reminder-settings input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border-radius: 3px;
+}
+
+.checkbox-label:hover input~.checkmark {
+    background-color: #ccc;
+}
+
+.checkbox-label input:checked~.checkmark {
+    background-color: #2196F3;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-label input:checked~.checkmark:after {
+    display: block;
+}
+
+.checkbox-label .checkmark:after {
+    left: 7px;
+    top: 3px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.threshold-setting {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.threshold-setting label {
+    flex-basis: 150px;
+}
+
+.threshold-setting input[type="number"] {
+    width: 70px;
+    margin-bottom: 0;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+.btn-secondary {
+    background-color: #bdc3c7;
+    color: #2c3e50;
+}
+
+.btn-secondary:hover {
+    background-color: #95a5a6;
+}
+
+
+/* 加载动画 */
+.loading-spinner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    /* Ensure it's on top */
+}
+
+.spinner {
+    border: 8px solid #f3f3f3;
+    /* Light grey */
+    border-top: 8px solid #3498db;
+    /* Blue */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+.loading-spinner p {
+    margin-top: 15px;
+    font-size: 1.1em;
+    color: #333;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .current-weather {
+        grid-template-columns: 1fr;
+        /* Stack main weather and reminders */
+    }
+
+    .weather-main {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .temperature {
+        font-size: 3em;
+    }
+
+    .weather-icon i {
+        font-size: 4em;
+    }
+
+    .logo h1 {
+        font-size: 1.5em;
+    }
+
+    .nav .btn-icon {
+        font-size: 1.3em;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .search-container {
+        flex-direction: column;
+    }
+
+    .search-input,
+    .search-btn {
+        border-radius: 4px;
+    }
+
+    .search-btn {
+        margin-top: 10px;
+    }
+
+    .weather-details {
+        grid-template-columns: 1fr;
+        /* Single column for details on small screens */
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 15px;
+    }
+}
+
+/* Utility classes */
+.hidden {
+    display: none !important;
+}

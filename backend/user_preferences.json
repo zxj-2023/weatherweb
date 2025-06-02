@@ -1,0 +1,41 @@
+{
+  "default_location": "北京",
+  "favorite_cities": [
+    "北京",
+    "上海",
+    "广州",
+    "深圳",
+    "南京"
+  ],
+  "reminder_rules": [
+    {
+      "id": "rain_alert",
+      "name": "降雨提醒",
+      "condition": "pop > 60",
+      "message": "今天可能下雨，记得带伞！",
+      "active": true
+    },
+    {
+      "id": "cold_alert",
+      "name": "低温提醒",
+      "condition": "temperature < 5",
+      "message": "气温较低，注意保暖！",
+      "active": true
+    },
+    {
+      "id": "hot_alert",
+      "name": "高温提醒",
+      "condition": "temperature > 35",
+      "message": "气温很高，注意防暑降温！",
+      "active": true
+    },
+    {
+      "id": "air_quality_alert",
+      "name": "空气质量提醒",
+      "condition": "aqi > 150",
+      "message": "空气质量较差，建议减少外出！",
+      "active": true
+    }
+  ],
+  "temperature_unit": "celsius"
+}
