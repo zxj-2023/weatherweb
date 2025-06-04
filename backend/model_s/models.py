@@ -70,3 +70,36 @@ class AlertResponse(BaseModel):
     type: str
     message: str
     severity: str  # low, medium, high
+
+# AI聊天相关模型
+class SimpleMessageRequest(BaseModel):
+    """简单消息请求（不依赖天气数据）"""
+    message: str
+    session_id: Optional[str] = None  # 会话ID，用于上下文
+
+class SimpleMessageResponse(BaseModel):
+    """简单消息响应"""
+    response: str
+    session_id: str
+
+class ChatRequest(BaseModel):
+    city: str
+    message: Optional[str] = None  # 用户可选输入消息
+
+class ChatResponse(BaseModel):
+    response: str
+    suggestions: List[str] = []
+    weather_context: Optional[dict] = None
+
+class WeatherContext(BaseModel):
+    """天气上下文信息，用于AI分析"""
+    city: str
+    temperature: float
+    feels_like: float
+    humidity: int
+    weather_description: str
+    wind_speed: float
+    visibility: int
+    aqi: int
+    rain_probability: Optional[float] = 0
+    is_day: bool = True

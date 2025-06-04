@@ -41,8 +41,7 @@
         </section>
 
         <!-- 主要内容区域 -->
-        <main class="main-content">
-            <!-- 当前天气卡片 -->
+        <main class="main-content"> <!-- 当前天气卡片 -->
             <section class="current-weather">
                 <div class="weather-card main-card">
                     <div class="weather-header">
@@ -95,6 +94,35 @@
                     </div>
                     <div class="reminder-content" id="reminderContent">
                         <!-- 提醒内容会动态添加 -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI聊天助手区域 -->
+            <section class="ai-chat-section">
+                <div class="ai-chat-card">
+                    <div class="chat-header">
+                        <i class="fas fa-robot"></i>
+                        <span>AI天气助手</span>
+                        <div class="chat-header-actions">
+                            <button id="refreshAiBtn" class="btn-icon-small" ,title="刷新AI建议">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="chat-content">
+                        <div class="ai-response" id="aiResponse">
+                            <div class="loading-message">正在获取天气建议...</div>
+                        </div>
+                        <div class="suggestions-list" id="suggestionsList">
+                            <!-- AI建议会动态添加 -->
+                        </div>
+                    </div>
+                    <div class="chat-input-container">
+                        <input type="text" id="userMessageInput" placeholder="问问AI关于天气的问题..." class="chat-input">
+                        <button id="sendMessageBtn" class="send-btn">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
                     </div>
                 </div>
             </section>
@@ -227,12 +255,11 @@
     <div id="loadingSpinner" class="loading-spinner" style="display: none;">
         <div class="spinner"></div>
         <p>正在获取天气数据...</p>
-    </div>
-
-    <!-- JavaScript文件 -->
+    </div> <!-- JavaScript文件 -->
     <script src="/static/js/utils.js"></script>
     <script src="/static/js/weather.js"></script>
     <script src="/static/js/settings.js"></script>
+    <script src="/static/js/ai.js"></script>
     <script src="/static/js/main.js"></script>
 </body>
 

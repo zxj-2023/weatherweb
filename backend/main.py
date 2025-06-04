@@ -10,6 +10,7 @@ from config import APP_HOST, APP_PORT, APP_DEBUG, CORS_ORIGINS
 
 from apps.weather.weather import weather
 from apps.user.user import user
+from apps.ai.ai import ai_router
 
 app = FastAPI(
     title="智能天气提醒助手",
@@ -32,6 +33,7 @@ app.mount("/static", StaticFiles(directory="../frontend/static"), name="static")
 #接口
 app.include_router(weather,prefix="/api/weather",tags=["天气信息接口"])
 app.include_router(user,prefix="/api",tags=["用户管理接口"])
+app.include_router(ai_router,prefix="/api/ai",tags=["AI聊天接口"])
 
 @app.get("/")
 async def root():

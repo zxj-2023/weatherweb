@@ -9,6 +9,12 @@ OPENWEATHER_BASE_URL = "http://api.openweathermap.org/data/2.5"
 OPENWEATHER_ONECALL_URL = "http://api.openweathermap.org/data/3.0/onecall"
 OPENWEATHER_GEO_URL = "http://api.openweathermap.org/geo/1.0"
 
+# AI聊天配置
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "your_openai_api_key_here")
+OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL", "https://dashscope.aliyuncs.com/compatible-mode/v1")
+OPENAI_MODEL = os.getenv("OPENAI_MODEL", "qwen-max")
+OPENAI_MAX_TOKENS = 500
+
 # 应用配置
 APP_HOST = "127.0.0.1"
 APP_PORT = 8000

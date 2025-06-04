@@ -14,6 +14,9 @@ async function init() {
         renderCityTabs();
         await loadAndRender(currentCity);
 
+        // 初始化AI聊天事件
+        initAIChatEvents();
+
         // 绑定刷新按钮
         refreshBtn.addEventListener('click', () => loadAndRender(currentCity));
     } catch (err) {
@@ -68,6 +71,9 @@ async function loadAndRender(city) {
         // 天气预报
         const forecast = await fetchForecast(city);
         renderForecast(forecast);
+        
+        // 加载AI建议
+        loadAISuggestions(city);
     } catch (err) {
         console.error('加载数据失败', err);
     }
@@ -178,3 +184,14 @@ searchBtn.addEventListener('click', async () => {
     await loadAndRender(city);
     cityInput.value = '';
 });
+
+/** 加载AI建议 */
+async function loadAISuggestions(city) {
+    try {
+        const aiData = await fetchAISuggestions(city);
+        renderAIResponse(aiData);
+    } catch (error) {
+        console.error('加载AI建议失败:', error);
+        showAIError('AI服务暂时不可用，请稍后再试。');
+    }
+}

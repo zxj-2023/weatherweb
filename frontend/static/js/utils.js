@@ -41,6 +41,13 @@ const rainThresholdInput = document.getElementById('rainThreshold');
 const saveSettingsBtn = document.getElementById('saveSettings');
 const cancelSettingsBtn = document.getElementById('cancelSettings');
 
+// AI聊天元素
+const aiResponse = document.getElementById('aiResponse');
+const suggestionsList = document.getElementById('suggestionsList');
+const userMessageInput = document.getElementById('userMessageInput');
+const sendMessageBtn = document.getElementById('sendMessageBtn');
+const refreshAiBtn = document.getElementById('refreshAiBtn');
+
 // 全局状态
 let currentCity = '北京'; // 默认城市
 let favoriteCities = [];

@@ -52,7 +52,7 @@ class WeatherService:
             pinyin_list = lazy_pinyin(city, style=Style.NORMAL)
             pinyin_name = ''.join(word.capitalize() for word in pinyin_list)
             return pinyin_name
-          # 如果已经是英文，直接返回
+        # 如果已经是英文，直接返回
         return city
         
     async def get_current_weather(self, city: str, country_code: Optional[str] = None) -> WeatherData:
